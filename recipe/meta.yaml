@@ -1,17 +1,17 @@
 {% set name = "pyqtgraph" %}
-{% set version = "0.13.7" %}
-{% set sha256 = "64f84f1935c6996d0e09b1ee66fe478a7771e3ca6f3aaa05f00f6e068321d9e3" %}
+{% set version = "0.14.0" %}
+{% set sha256 = "30f41a2f27ec41fb7d4442dbb150b004520ba83e777cdf5bb9cce0d18017424f" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://github.com/{{ name }}/{{ name }}/archive/refs/tags/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   noarch: python
 
@@ -22,7 +22,8 @@ requirements:
     - setuptools
   run:
     - python >={{ python_min }}
-    - numpy >=1.22
+    - numpy >=1.25
+    - colorama
   run_constrained:
     - pyside2 >=5.15
     - pyqt >=5.15
